@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 1st Anniversary Megha! ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a0005, #4d0011, #1a0005);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Floating Hearts Animation */
+        .heart-particle {
+            position: absolute;
+            color: rgba(255, 51, 102, 0.6);
+            font-size: 20px;
+            animation: floatUp 6s linear infinite;
+            bottom: -50px;
+            z-index: 0;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+
+        .container {
+            max-width: 800px;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #ff3366;
+            margin-bottom: 10px;
+            text-shadow: 0 0 15px rgba(255, 51, 102, 0.6);
+            animation: pulse 2s infinite;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: #ff99bb;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+
+        .milestone {
+            font-size: 1.5rem;
+            background: rgba(255, 51, 102, 0.2);
+            padding: 15px 25px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 40px;
+            border: 1px solid #ff3366;
+        }
+
+        /* Interactive Question Window */
+        .love-window {
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid #ff3366;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px auto;
+            max-width: 400px;
+            box-shadow: 0 0 20px rgba(255, 51, 102, 0.4);
+        }
+
+        .love-window p {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 10px 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-yes {
+            background-color: #ff3366;
+            color: white;
+            box-shadow: 0 0 10px rgba(255, 51, 102, 0.5);
+        }
+
+        .btn-yes:hover {
+            transform: scale(1.1);
+            background-color: #ff0044;
+        }
+
+        .btn-no {
+            background-color: #555;
+            color: white;
+        }
+
+        /* Gift Box styling */
+        .gift-container {
+            margin: 20px 0;
+            cursor: pointer;
+            perspective: 1000px;
+        }
+
+        .gift-box {
+            font-size: 80px;
+            transition: transform 0.5s ease;
+            display: inline-block;
+        }
+
+        .gift-box:hover {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .hidden-message {
+            display: none;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 1s ease-out;
+            margin-top: 30px;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            border-left: 5px solid #ff3366;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            text-align: left;
+        }
+
+        .show {
+            display: block;
+            max-height: 1000px;
+            animation: fadeIn 1s forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .signature {
+            margin-top: 30px;
+            font-size: 1.4rem;
+            color: #ff99bb;
+            font-weight: bold;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Happy 1st Anniversary, Megha! ❤️</h1>
+        <h2>1 Year of Love, Laughter, and Beautiful Memories</h2>
+
+        <div class="milestone">
+            🗓️ 365 Days Together & Counting...
+        </div>
+
+        <!-- The Ask Window -->
+        <div class="love-window" id="askWindow">
+            <p id="questionText">Do you love me Babudi? 🥺</p>
+            <div class="btn-container" id="btnContainer">
+                <button class="btn btn-yes" onclick="answeredYes()">Yes</button>
+                <button class="btn btn-no" onclick="answeredNo()">No</button>
+            </div>
+        </div>
+
+        <p style="font-size: 1.1rem; color: #ddd; margin-bottom: 20px;">
+            Megha, click the magical gift box below to read a special message from my heart to yours. 👇
+        </p>
+
+        <!-- Surprise Gift Box -->
+        <div class="gift-container" onclick="revealMessage()">
+            <div class="gift-box" id="giftIcon">🎁</div>
+        </div>
+
+        <!-- Hidden Love Letter -->
+        <div class="hidden-message" id="loveLetter">
+            <p>Dearest Megha,</p>
+            <br>
+            <p>Happy First Anniversary! I cannot believe a whole year has passed since we started this beautiful journey together. Every single day spent with you has been a blessing. Your smile lights up my darkest days, and your love makes me a better person.</p>
+            <br>
+            <p>Thank you for always being my support system, my best friend, and my ultimate happiness. I cherish every laugh we shared, every deep conversation, and even the little silly fights that brought us closer.</p>
+            <br>
+            <p>This is just the first page of our lifelong love story, and I cannot wait to write the rest of the chapters with you. I promise to love you, respect you, and hold your hand through everything life throws at us.</p>
+            <br>
+            <p>I love you more than words can ever express. ❤️</p>
+            <div class="signature">Forever Yours,<br>Varun</div>
+        </div>
+    </div>
+
+    <script>
+        // Create falling hearts background dynamically
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart-particle');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 3 + 's';
+            heart.style.fontSize = Math.random() * 15 + 15 + 'px';
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+
+        setInterval(createHeart, 300);
+
+        // Interactive Choice Logic
+        function answeredYes() {
+            document.getElementById('questionText').innerHTML = "Congratulations! Now you are my wife! 💍❤️";
+            document.getElementById('btnContainer').style.display = 'none'; // Hide buttons on success
+            
+            // Blast a ton of hearts
+            for(let i=0; i<30; i++) {
+                setTimeout(createHeart, i * 40);
+            }
+        }
+
+        function answeredNo() {
+            // Instantly resets the loop window back to the original question state
+            const windowBox = document.getElementById('askWindow');
+            windowBox.style.animation = 'none';
+            void windowBox.offsetWidth; // Trigger reflow to restart animation effects
+            windowBox.style.animation = 'pulse 0.5s ease';
+            
+            document.getElementById('questionText').innerHTML = "Do you love me Babudi? 🥺 (Choose wisely!)";
+        }
+
+        // Click event to reveal the letter
+        function revealMessage() {
+            const letter = document.getElementById('loveLetter');
+            const gift = document.getElementById('giftIcon');
+            
+            if (!letter.classList.contains('show')) {
+                letter.classList.add('show');
+                gift.innerHTML = '💖';
+                gift.style.transform = 'scale(1.3)';
+                
+                for(let i=0; i<20; i++) {
+                    setTimeout(createHeart, i * 50);
+                }
+            }
+        }
+    </script>
+</body>
+</html>
